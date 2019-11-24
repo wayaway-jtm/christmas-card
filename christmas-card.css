@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+}
+
+h1, h2 {
+    font-weight: normal;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.ornament {
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    background-color: blue;
+    position: absolute;
+}
+.lights.fast {
+    animation: flicker 1s ease alternate infinite;
+}
+.lights.delay {
+    animation: flicker 3s ease alternate infinite;
+}
+
+.lights {
+    animation: flicker 2s ease alternate infinite;
+    background-color: yellow;
+    height: 5px;
+    width: 5px;
+    border-radius: 5px;
+    top: 19px;
+    z-index: 9999;
+    position: absolute;
+}
+
+.christmas-card {
+    color: #fff;
+    background-color: red;
+    position: relative;
+    text-align: center;
+    margin: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 3rem;
+    font-family: 'Mountains of Christmas', cursive;
+}
+
+body {
+    background-color: darkgreen;
+    font-family: 'PT Sans',arial, sans-serif;
+}
+
+.christmas-tree {
+    margin: auto;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+.level {
+    border-bottom-color: darkgreen;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    border-style: solid;
+    width: 0;
+    height: 0;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: top 2s ease;
+}
+
+.level-1 {
+    border-left-width: 50px;
+    border-right-width: 50px;
+    border-bottom-width: 100px;
+}
+
+.level-2 {
+    border-left-width: 75px;
+    border-right-width: 75px;
+    border-bottom-width: 150px;
+    top: -75px;
+}
+
+.level-3 {
+    border-left-width: 100px;
+    border-right-width: 100px;
+    border-bottom-width: 200px;
+    top: -200px;
+}
+
+.red {
+    background-color: red;
+}
+
+.silver {
+    background-color: silver;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.root {
+    height: 50px;
+    width: 50px;
+    top: 259px;
+    background-color: brown;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hidden{
+    color: transparent;
+}
+
+.christmas-tree .fa-star {
+    font-size: 35px;
+    position: absolute;
+    top: -100vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999999;
+    transition: top 2s ease;
+}
+
+.hidden-slide {
+    top: -100vh !important;
+}
+
+.christmas-tree .fa-star.done {
+    top: -12px;
+}
