@@ -1,0 +1,11 @@
+[ ] Add each level of the tree
+[ ] Add javscript to programatically add:
+    * [ ] lights
+    * [ ] ornaments
+[ ] Slide in elements using set timeout
+[ ] Add your own flair!
+    - Change message
+    - Change size of tree
+    - Change amounts, colors of decorations
+    - Add additional elements, like ribbons or presents under the tree
+    - If you're a grinch, add a transition to burn down the tree

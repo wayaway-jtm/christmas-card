@@ -15,6 +15,13 @@ h1, h2 {
     font-weight: normal;
 }
 
+/*
+    Key frames allow us to animate the opacity
+    to get a flicker effect
+
+    Using CSS classes to change the animation speed
+    to flicker at different levels
+*/
 @keyframes flicker {
     0% {
         opacity: 1;
@@ -32,9 +39,11 @@ h1, h2 {
     background-color: blue;
     position: absolute;
 }
+
 .lights.fast {
     animation: flicker 1s ease alternate infinite;
 }
+
 .lights.delay {
     animation: flicker 3s ease alternate infinite;
 }
@@ -76,14 +85,20 @@ body {
     left: 50%;
     transform: translateX(-50%);
     position: relative;
+    min-height: 500px;f
 }
 
+/**
+    Level should be a triangle with a dark green color
+    Use borders to acheive triangles
+    border bottom should be the width of the triangle
+    border-left and border-right should be 1/2 of the
+    width of the triangle.
+
+    All 3 levels should line up perfectly with the
+    star and the base of the tree.
+*/
 .level {
-    border-bottom-color: darkgreen;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: transparent;
-    border-style: solid;
     width: 0;
     height: 0;
     position: relative;
@@ -93,23 +108,23 @@ body {
     transition: top 2s ease;
 }
 
+/*
+ 100px wide
+*/
 .level-1 {
-    border-left-width: 50px;
-    border-right-width: 50px;
-    border-bottom-width: 100px;
 }
 
+/*
+    150px wide
+*/
 .level-2 {
-    border-left-width: 75px;
-    border-right-width: 75px;
-    border-bottom-width: 150px;
     top: -75px;
 }
 
+/*
+    200px wide
+*/
 .level-3 {
-    border-left-width: 100px;
-    border-right-width: 100px;
-    border-bottom-width: 200px;
     top: -200px;
 }
 
@@ -125,6 +140,10 @@ body {
     background-color: blue;
 }
 
+/*
+ The base of the tree
+ position is given for you.
+*/
 .root {
     height: 50px;
     width: 50px;
@@ -135,19 +154,28 @@ body {
     transform: translateX(-50%);
 }
 
-.hidden{
+/*
+Uncomment when finished
+ .hidden{
     color: transparent;
 }
+*/
 
+/*
+    Star at the top of the tree
+    position is given for you.
+*/
 .christmas-tree .fa-star {
     font-size: 35px;
     position: absolute;
-    top: -100vh;
+    top: -200vh;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 99999999;
-    transition: top 2s ease;
+    z-index: 3;
+    min-height: 500px;
+    /* TODO: transition based on top value*/
 }
+
 
 .hidden-slide {
     top: -100vh !important;

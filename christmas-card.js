@@ -6,36 +6,58 @@
     }
 
     class Decoration {
+        /**
+         * Basic decoration
+         *
+         * @param {*} left The "left" position for the item in the DOM
+         * @param {*} top The "right" position for the item in the DOM
+         */
         constructor(left, top) {
             this.left = left;
             this.top = top;
         }
 
+        /**
+         * Inline styles to set the position of the element.
+         */
         getStyle() {
             return `top: ${this.top}px; left: ${this.left}px;`;
         }
 
+        /**
+         * Return the HTML that will go on the page.
+         */
         toHTML() {
             return `<div class="${this.getClass()}" style="${this.getStyle()}"></div>`;
         }
     }
 
-    class Light extends Decoration  {
+    class Light extends Decoration {
+        /**
+         * CSS class on the HTML element
+         *
+         * Will always have "lights", but speed will
+         * be either "fast", "delayed", or "", which is normal
+         */
         getClass() {
             return `lights ${this.getSpeed()}`;
         }
 
+        /**
+         * Return fast, delayed or empty (default)
+         * based on random number, spread evenly
+         */
         getSpeed() {
-            let number = getRandomIntInclusive(1, 3);
+            // Get random number between 1 and 3
 
-            switch (number) {
-                case 1:
-                    return 'fast';
-                case 2:
-                    return 'delayed';
-                case 3:
-                    return '';
-            }
+            // if 1
+            // return fast
+
+            // if 2
+            // return delay
+
+            // if 3
+            // return ''
         }
     }
 
@@ -45,16 +67,16 @@
         }
 
         getColor() {
-            const color = getRandomIntInclusive(1, 3);
+            // Get random number between 1 and 3
 
-            switch (color) {
-                case 1:
-                    return 'red';
-                case 2:
-                    return 'blue';
-                case 3:
-                    return 'silver';
-            }
+            // if 1
+            // return red
+
+            // if 2
+            // return blue
+
+            // if 3
+            // return silver
         }
     }
 
@@ -62,27 +84,34 @@
         constructor() {
             this.$decorate = document.getElementById('decorate');
 
-            setTimeout(_ => this.slideInRoot(), 1000);
-            setTimeout(_ => this.slideInLevel(3), 2000);
-            setTimeout(_ => this.slideInLevel(2), 3000);
-            setTimeout(_ => this.slideInLevel(1), 4000);
-            setTimeout(_ => this.addStar(), 6000);
-            setTimeout(_ => this.addOrnaments(), 8000);
-            setTimeout(_ => this.addLights(), 9000);
-            setTimeout(_ => this.showText(), 11000);
+            /**
+             * @todo Slide in when everything has been created
+             *
+             */
+            // setTimeout(_ => this.slideInRoot(), 1000);
+            // setTimeout(_ => this.slideInLevel(3), 2000);
+            // setTimeout(_ => this.slideInLevel(2), 3000);
+            // setTimeout(_ => this.slideInLevel(1), 4000);
+            // setTimeout(_ => this.addStar(), 6000);
+            // setTimeout(_ => this.addOrnaments(), 8000);
+            // setTimeout(_ => this.addLights(), 9000);
+            // setTimeout(_ => this.showText(), 11000);
         }
 
         slideInRoot() {
             let safeExit = 0;
             let $elements = document.getElementsByClassName('hidden-slide root');
 
-            while($elements.length) {
+            while ($elements.length) {
                 safeExit++;
 
-                if ( safeExit === 100 ) {
+                if (safeExit === 100) {
                     break;
                 }
-                $elements[0].classList.remove('hidden-slide');
+
+                /**
+                 * @todo remove hidden-slide class from each element
+                */
             }
         }
 
@@ -90,54 +119,85 @@
             let safeExit = 0;
             let $elements = document.getElementsByClassName('hidden-slide level-' + level);
 
-            while($elements.length) {
-                console.log($elements);
+            /**
+             * @todo remove hidden-slide class from each element
+            */
+            while ($elements.length) {
                 safeExit++;
 
-                if ( safeExit === 100 ) {
+                if (safeExit === 100) {
                     break;
                 }
-                $elements[0].classList.remove('hidden-slide');
             }
         }
 
+        /**
+         * Slide in text
+         */
         showText() {
             let $elements = document.getElementsByClassName('show-text hidden');
-            console.log($elements);
-            while($elements.length) {
+
+            while ($elements.length) {
                 $elements[0].classList.remove('hidden');
             }
         }
 
+        /**
+         * Slide in star
+         */
         addStar() {
             document.getElementById('star').classList.add('done');
         }
 
+        /**
+         * Add all levels of lights
+         */
         addLights() {
             this.addLevel(-25, 40, 15, 'lights');
             this.addLevel(40, 120, 40, 'lights');
             this.addLevel(120, 190, 60, 'lights');
         }
 
-        addLevel(min, max, lights, type) {
-            for (let i = 0; i < lights; i++) {
-                this.addDecoration(min, max, type);
-            }
+        /**
+         * Add decorations to each level of the tree
+         *
+         * @param {number} min The min position on the Y-axis to add to.
+         * @param {number} max The max position on the Y-axis to add to.
+         * @param {number} decorations The number of decorations to add.
+         * @param {string} type Type of decoration (light vs ornament)
+         */
+        addLevel(min, max, decorations, type) {
+            /**
+             * @todo Add for loop to add x amount of decorations based
+             * on the `decorations` value
+             */
+            this.addDecoration(min, max, type);
         }
 
+        /**
+         * Add all levels of ornaments
+         */
         addOrnaments() {
             this.addLevel(-25, 40, 5, 'ornament');
             this.addLevel(40, 120, 10, 'ornament');
             this.addLevel(120, 190, 20, 'ornament');
         }
 
+        /**
+         * Get top and left positions based on yMin and yMax
+         *
+         * Will randomly calculate positions based on the range.
+         *
+         * @param {number} yMin
+         * @param {number} yMax
+         */
         getCoordinates(yMin, yMax) {
             const top = getRandomIntInclusive(yMin, yMax);
 
             let left;
 
             /**
-             * @todo could probably use math for this
+             * @todo could probably use maths for this
              */
             if (top < -25) {
                 left = getRandomIntInclusive(-2, 2);
@@ -175,22 +235,31 @@
                 left = getRandomIntInclusive(-60, 60);
             }
 
-            return {top, left};
+            return { top, left };
         }
 
+        /**
+         * Add a decoration to the Christmas tree
+         *
+         * @param {number} min Min Y Coordinate
+         * @param {number} max Max Y Coordinate
+         * @param {string} type Light or Ornament
+         */
         addDecoration(min, max, type) {
             let decoration;
 
-            const {top, left} = this.getCoordinates(min, max);
-            console.log(top, left);
+            const { top, left } = this.getCoordinates(min, max);
 
-            if ( type === 'ornament' ) {
+            if (type === 'ornament') {
                 decoration = new Ornament(left, top);
             } else {
                 decoration = new Light(left, top)
             }
 
-            document.getElementById('decorate').innerHTML += decoration.toHTML();
+            const html = decoration.toHTML();
+            /**
+             * @todo append html to #decorate element
+             */
         }
     }
 
