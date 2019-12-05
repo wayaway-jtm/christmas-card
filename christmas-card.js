@@ -48,16 +48,23 @@
          * based on random number, spread evenly
          */
         getSpeed() {
+            let speed;
             // Get random number between 1 and 3
+            const randNum = getRandomIntInclusive(1, 3);
 
-            // if 1
-            // return fast
+            switch(randNum) {
+                case 1:
+                    speed = 'fast';
+                    break;
+                case 2:
+                    speed = 'delay';
+                    break;
+                default:
+                    speed = '';
+                    break;
+            }
 
-            // if 2
-            // return delay
-
-            // if 3
-            // return ''
+            return speed;
         }
     }
 
@@ -67,16 +74,23 @@
         }
 
         getColor() {
+            let color;
             // Get random number between 1 and 3
+            const randNum = getRandomIntInclusive(1, 3);
 
-            // if 1
-            // return red
+            switch(randNum) {
+                case 1:
+                    color = 'red';
+                    break;
+                case 2:
+                    color = 'blue';
+                    break;
+                default:
+                    color = 'silver';
+                    break;
+            }
 
-            // if 2
-            // return blue
-
-            // if 3
-            // return silver
+            return color;
         }
     }
 
@@ -88,14 +102,14 @@
              * @todo Slide in when everything has been created
              *
              */
-            // setTimeout(_ => this.slideInRoot(), 1000);
-            // setTimeout(_ => this.slideInLevel(3), 2000);
-            // setTimeout(_ => this.slideInLevel(2), 3000);
-            // setTimeout(_ => this.slideInLevel(1), 4000);
-            // setTimeout(_ => this.addStar(), 6000);
-            // setTimeout(_ => this.addOrnaments(), 8000);
-            // setTimeout(_ => this.addLights(), 9000);
-            // setTimeout(_ => this.showText(), 11000);
+             setTimeout(_ => this.slideInRoot(), 1000);
+             setTimeout(_ => this.slideInLevel(3), 2000);
+             setTimeout(_ => this.slideInLevel(2), 3000);
+             setTimeout(_ => this.slideInLevel(1), 4000);
+             setTimeout(_ => this.addStar(), 6000);
+             setTimeout(_ => this.addOrnaments(), 8000);
+             setTimeout(_ => this.addLights(), 9000);
+             setTimeout(_ => this.showText(), 11000);
         }
 
         slideInRoot() {
@@ -112,6 +126,7 @@
                 /**
                  * @todo remove hidden-slide class from each element
                 */
+               $elements[0].classList.remove('hidden-slide');
             }
         }
 
@@ -128,6 +143,7 @@
                 if (safeExit === 100) {
                     break;
                 }
+                $elements[0].classList.remove('hidden-slide');
             }
         }
 
@@ -153,8 +169,11 @@
          * Add all levels of lights
          */
         addLights() {
+            // Add 15 lights to first level
             this.addLevel(-25, 40, 15, 'lights');
+            // Add 40 lights to second level
             this.addLevel(40, 120, 40, 'lights');
+            // Add 60 lights to third level
             this.addLevel(120, 190, 60, 'lights');
         }
 
@@ -171,7 +190,9 @@
              * @todo Add for loop to add x amount of decorations based
              * on the `decorations` value
              */
-            this.addDecoration(min, max, type);
+            for (let i = 0; i < decorations; i++) {
+                this.addDecoration(min, max, type);
+            }
         }
 
         /**
@@ -257,9 +278,9 @@
             }
 
             const html = decoration.toHTML();
-            /**
-             * @todo append html to #decorate element
-             */
+
+             const decorate = document.querySelector('#decorate');
+             decorate.innerHTML += html;
         }
     }
 

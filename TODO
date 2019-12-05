@@ -1,6 +1,6 @@
-[ ] Add each level of the tree
+[X] Add each level of the tree
 [ ] Add javscript to programatically add:
-    * [ ] lights
+    * [X] lights
     * [ ] ornaments
 [ ] Slide in elements using set timeout
 [ ] Add your own flair!

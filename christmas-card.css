@@ -85,7 +85,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     position: relative;
-    min-height: 500px;f
+    min-height: 500px;
 }
 
 /**
@@ -106,12 +106,20 @@ body {
     left: 50%;
     transform: translateX(-50%);
     transition: top 2s ease;
+    border-bottom-color: darkgreen;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-style: solid;
+    border-top-width: 0;
 }
 
 /*
  100px wide
 */
 .level-1 {
+    border-right-width: 50px;
+    border-left-width: 50px;
+    border-bottom-width: 100px;
 }
 
 /*
@@ -119,6 +127,9 @@ body {
 */
 .level-2 {
     top: -75px;
+    border-right-width: 75px;
+    border-left-width: 75px;
+    border-bottom-width: 150px;
 }
 
 /*
@@ -126,6 +137,9 @@ body {
 */
 .level-3 {
     top: -200px;
+    border-right-width: 100px;
+    border-left-width: 100px;
+    border-bottom-width: 200px;
 }
 
 .red {
@@ -152,14 +166,15 @@ body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    transition: top 2s ease;
 }
 
-/*
-Uncomment when finished
+
+
  .hidden{
     color: transparent;
 }
-*/
+
 
 /*
     Star at the top of the tree
@@ -173,7 +188,7 @@ Uncomment when finished
     transform: translateX(-50%);
     z-index: 3;
     min-height: 500px;
-    /* TODO: transition based on top value*/
+    transition: top 2s ease;
 }
 
 
